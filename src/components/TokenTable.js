@@ -62,14 +62,15 @@ const TokenTable = (props) => {
           {props.items.map((row) => {
             return (
               <tr
-                onClick={() => handleRowClick(row)}
                 key={row.id}
                 style={{
                   backgroundColor: colorMap[row.status],
                 }}
               >
                 {props.columns.map((column) => (
-                  <td key={column.key}>{column.render(row)}</td>
+                  <td onClick={() => handleRowClick(row)} key={column.key}>
+                    {column.render(row)}
+                  </td>
                 ))}
                 <td>
                   <button onClick={() => handleBuy(row.id)}>Buy</button>
